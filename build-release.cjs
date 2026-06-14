@@ -142,9 +142,9 @@ New-SelfSignedCertificate -Type Custom -Subject "CN=ResourceMonitorDev, O=Resour
 4. เลือกส่งออก Private Key ตั้งรหัสผ่านของไฟล์ใบรับรอง และบันทึกไฟล์เป็นชื่อ \`cert.pfx\`
 
 #### ขั้นตอนที่ 3: ใช้ Signtool ลงลายมือชื่อไฟล์แอป
-รันคำสั่งด้วย \`signtool.exe\` (ที่มีมากับ Windows SDK) เพื่อ Sign ไฟล์แอป:
-\`\`\`cmd
-signtool sign /f cert.pfx /p [รหัสผ่านของคุณ] /t http://timestamp.digicert.com /fd SHA256 src-tauri/target/release/resource-monitor.exe
+รันคำสั่งด้วย \`signtool.exe\` เพื่อ Sign ไฟล์แอป (หากพิมพ์ signtool ตรง ๆ แล้วไม่เจอ ให้เรียกใช้ผ่านเส้นทางเต็มใน PowerShell):
+\`\`\`powershell
+& "C:\\Program Files (x86)\\Windows Kits\\10\\bin\\10.0.28000.0\\x64\\signtool.exe" sign /f cert.pfx /p [รหัสผ่านของคุณ] /t http://timestamp.digicert.com /fd SHA256 src-tauri/target/release/resource-monitor.exe
 \`\`\`
 
 #### ขั้นตอนที่ 4: การนำเข้าใบรับรองบนเครื่องอื่นเพื่อยอมรับแอป
