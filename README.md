@@ -9,7 +9,7 @@
 👉 [**ดาวน์โหลด Resource Monitor v0.1.0 (2026-06-14)**](https://github.com/iamdev/Resource-Monitor-Dashboard/raw/main/release/Resource_Monitor_v0.1.0_20260614.zip)
 
 > [!NOTE]  
-> แตกไฟล์ ZIP แล้วรันไฟล์ **`tauri-app.exe`** ได้ทันทีโดยไม่ต้องทำการติดตั้ง (Portable) และไม่จำเป็นต้องใช้สิทธิ์ Administrator (สิทธิ์แอดมิน) ในการรันแอป
+> แตกไฟล์ ZIP แล้วรันไฟล์ **`resource-monitor.exe`** ได้ทันทีโดยไม่ต้องทำการติดตั้ง (Portable) และไม่จำเป็นต้องใช้สิทธิ์ Administrator (สิทธิ์แอดมิน) ในการรันแอป
 
 ---
 

@@ -35,8 +35,8 @@ try {
   process.exit(1);
 }
 
-// 3. Verify tauri-app.exe exists
-const exePath = path.join("src-tauri", "target", "release", "tauri-app.exe");
+// 3. Verify resource-monitor.exe exists
+const exePath = path.join("src-tauri", "target", "release", "resource-monitor.exe");
 if (!fs.existsSync(exePath)) {
   console.error(`Compiled executable not found at ${exePath}!`);
   process.exit(1);
@@ -48,7 +48,7 @@ if (!fs.existsSync("release")) {
   console.log("📁 Created release directory.");
 }
 
-// 5. Compress tauri-app.exe to zip using PowerShell's Compress-Archive
+// 5. Compress resource-monitor.exe to zip using PowerShell's Compress-Archive
 const zipName = `Resource_Monitor_v${version}_${dateStr}.zip`;
 const zipPath = path.join("release", zipName);
 console.log(`🤐 Compressing ${exePath} to ${zipPath}...`);
@@ -77,7 +77,7 @@ const readmeContent = `# Resource Monitor Dashboard 🖥️
 👉 [**ดาวน์โหลด Resource Monitor v${version} (${formattedDate})**](https://github.com/iamdev/Resource-Monitor-Dashboard/raw/main/release/${zipName})
 
 > [!NOTE]  
-> แตกไฟล์ ZIP แล้วรันไฟล์ **\`tauri-app.exe\`** ได้ทันทีโดยไม่ต้องทำการติดตั้ง (Portable) และไม่จำเป็นต้องใช้สิทธิ์ Administrator (สิทธิ์แอดมิน) ในการรันแอป
+> แตกไฟล์ ZIP แล้วรันไฟล์ **\`resource-monitor.exe\`** ได้ทันทีโดยไม่ต้องทำการติดตั้ง (Portable) และไม่จำเป็นต้องใช้สิทธิ์ Administrator (สิทธิ์แอดมิน) ในการรันแอป
 
 ---
 
