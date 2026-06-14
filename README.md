@@ -1,7 +1,51 @@
-# Tauri + React + Typescript
+# Resource Monitor Dashboard 🖥️
 
-This template should help get you started developing with Tauri, React and Typescript in Vite.
+แอปพลิเคชันแดชบอร์ดแสดงสถานะฮาร์ดแวร์บนหน้าจอคอมพิวเตอร์ในรูปแบบ Overlay Panel กึ่งโปร่งใส (Glassmorphism) สวยงามระดับพรีเมียม พัฒนาด้วย **Tauri + React + TypeScript** น้ำหนักเบามาก กินทรัพยากรน้อยมาก (RAM < 20MB, CPU < 1%)
 
-## Recommended IDE Setup
+---
 
-- [VS Code](https://code.visualstudio.com/) + [Tauri](https://marketplace.visualstudio.com/items?itemName=tauri-apps.tauri-vscode) + [rust-analyzer](https://marketplace.visualstudio.com/items?itemName=rust-lang.rust-analyzer)
+## 📥 ดาวน์โหลดเวอร์ชันล่าสุด (Download Release)
+
+👉 [**ดาวน์โหลด Resource Monitor v0.1.0 (2026-06-14)**](https://github.com/iamdev/Resource-Monitor-Dashboard/raw/main/release/Resource_Monitor_v0.1.0_20260614.zip)
+
+> [!NOTE]  
+> แตกไฟล์ ZIP แล้วรันไฟล์ **`tauri-app.exe`** ได้ทันทีโดยไม่ต้องทำการติดตั้ง (Portable) และไม่จำเป็นต้องใช้สิทธิ์ Administrator (สิทธิ์แอดมิน) ในการรันแอป
+
+---
+
+## ✨ คุณสมบัติของแดชบอร์ด (Features)
+- **ปรับขนาดได้ 4 รูปแบบ (S / M / L / XL)** เพื่อให้เหมาะสมกับพื้นที่บนหน้าจอ
+- **CPU**: แสดงความเร็วสัญญาณนาฬิกา (GHz) การใช้งานแยกแต่ละคอร์ และจำนวนคอร์หลัก
+- **RAM**: แสดงข้อมูลการใช้งาน ความจุที่พร้อมใช้งาน (Available) และความจุแคช (Cached) แยกบรรทัดชัดเจน
+- **GPU (การ์ดจอ)**: แสดง % การประมวลผล 3D, % Video Encode, การใช้งาน VRAM และการใช้งาน Shared VRAM แยกเป็นบรรทัดอย่างละเอียด (กรองการ์ดจอเสมือนออกให้อัตโนมัติ)
+- **Disk (ฮาร์ดดิสก์)**: แสดงความเร็วในการอ่าน/เขียนแบบเรียลไทม์ และความจุว่าง (Free Space) แยกบรรทัดเรียงตามรายลูก
+- **Network**: ตัวกรองพอร์ต LAN/Wifi อัจฉริยะ แสดงเฉพาะสายที่เชื่อมต่ออินเทอร์เน็ตอยู่ ณ ขณะนั้น (หากตัดการเชื่อมต่อจะขึ้น Offline)
+
+---
+
+## 🛠️ วิธีการติดตั้งเพื่อพัฒนาต่อ (Development Setup)
+
+1. ติดตั้ง Node.js และ Rust บนเครื่องคอมพิวเตอร์ของคุณ
+2. โคลนคลังโค้ดนี้:
+   ```bash
+   git clone https://github.com/iamdev/Resource-Monitor-Dashboard.git
+   cd Resource-Monitor-Dashboard
+   ```
+3. ติดตั้ง Dependencies:
+   ```bash
+   npm install
+   ```
+4. รันโหมด Developer (พัฒนาไปพร้อมทดสอบ):
+   ```bash
+   npm run tauri dev
+   ```
+
+---
+
+## 📋 รายละเอียดการปล่อยเวอร์ชันนี้ (Release Notes - v0.1.0)
+- **วันที่ปล่อยตัว**: 2026-06-14
+- **การอัปเกรดและการแก้ไขบั๊กล่าสุด**:
+  - แก้ไขปัญหา VRAM เพี้ยนและการใช้งานทะลุ 160% โดยการดึงขนาดหน่วยความจำจริงผ่าน **DXGI API** และจัดกลุ่มคุมระดับ Utilized Engine
+  - กรองการ์ดจอเสมือน `Microsoft Basic Render Driver` ออกให้อัตโนมัติ เหลือเฉพาะการ์ดจอตัวจริง
+  - แยกรายละเอียดการแสดงผลของ **GPU (Enc, Vram, Shared)** และ **Disk (Read/Write, Free)** ออกเป็นคนละบรรทัดในโหมด XL เพื่อให้มีหน้าตาเหมือนหน้าต่าง Task Manager
+  - แยกรายละเอียดความจุแรม **Available** (แสดงคำเต็ม) และ **Cached** แยกคนละบรรทัดในโหมด XL
