@@ -6,7 +6,7 @@
 
 ## 📥 ดาวน์โหลดเวอร์ชันล่าสุด (Download Release)
 
-👉 [**ดาวน์โหลด Resource Monitor v0.1.0 (2026-06-14)**](https://github.com/iamdev/Resource-Monitor-Dashboard/raw/main/release/Resource_Monitor_v0.1.0_20260614.zip)
+👉 [**ดาวน์โหลด Resource Monitor v0.1.2 (2026-06-14)**](https://github.com/iamdev/Resource-Monitor-Dashboard/raw/main/release/Resource_Monitor_v0.1.2_20260614.zip)
 
 > [!NOTE]  
 > แตกไฟล์ ZIP แล้วรันไฟล์ **`resource-monitor.exe`** ได้ทันทีโดยไม่ต้องทำการติดตั้ง (Portable) และไม่จำเป็นต้องใช้สิทธิ์ Administrator (สิทธิ์แอดมิน) ในการรันแอป
@@ -91,15 +91,15 @@ Import-Certificate -FilePath "cert.cer" -CertStoreLocation Cert:\LocalMachine\Ro
 #### ขั้นตอนการสั่งปล่อยเวอร์ชันใหม่บน GitHub:
 1. พิมพ์คำสั่ง Tag เวอร์ชันบน Git แล้ว push ขึ้นไป:
    ```bash
-   git tag v0.1.0
-   git push origin v0.1.0
+   git tag v0.1.2
+   git push origin v0.1.2
    ```
 2. หรือไปที่หน้าเว็บ GitHub ของโปรเจกต์นี้ > แท็บ **Actions** > เลือกเวิร์กโฟลว์ **Build & Publish Release** > กดปุ่ม **Run workflow**
 3. ระบบจะทำงานและสร้าง **Draft Release** พร้อมอัปโหลดไฟล์ติดตั้งให้คุณเลือกกด Publish บน GitHub ทันที!
 
 ---
 
-## 📋 รายละเอียดการปล่อยเวอร์ชันนี้ (Release Notes - v0.1.0)
+## 📋 รายละเอียดการปล่อยเวอร์ชันนี้ (Release Notes - v0.1.2)
 - **วันที่ปล่อยตัว**: 2026-06-14
 - **การอัปเกรดและการแก้ไขบั๊กล่าสุด**:
   - แก้ไขปัญหา VRAM เพี้ยนและการใช้งานทะลุ 160% โดยการดึงขนาดหน่วยความจำจริงผ่าน **DXGI API** และจัดกลุ่มคุมระดับ Utilized Engine
