@@ -1,0 +1,189 @@
+:root {
+  --bg-glass: rgba(20, 20, 25, 0.65);
+  --bg-glass-hover: rgba(30, 30, 35, 0.85);
+  --border-glass: rgba(255, 255, 255, 0.08);
+  --text-main: #ffffff;
+  --text-muted: #8892b0;
+  
+  --color-cpu: #00d2ff;
+  --color-ram: #ff007a;
+  --color-disk: #00ff87;
+  --color-net: #f9d423;
+  --color-gpu: #b06ab3;
+
+  --font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  --transition-fast: 0.2s ease;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-family);
+  color: var(--text-main);
+  background-color: transparent;
+  overflow: hidden; /* Important for frameless overlay */
+  user-select: none;
+}
+
+/* Make the whole window draggable in Tauri (except when hovering over specific elements if needed) */
+#root {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding: 6px; /* Transparent padding prevents clashing with OS window rounded corners */
+  box-sizing: border-box;
+  background: transparent;
+}
+
+.dashboard-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  align-content: start;
+  gap: 12px;
+  padding: 16px;
+  background: var(--bg-glass);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--border-glass);
+  border-radius: 12px; /* Smoother corner rounding to match Windows 11 rounded style */
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* S Size layout overrides */
+.dashboard-container.s {
+  gap: 8px;
+  padding: 10px;
+}
+.dashboard-container.s .widget {
+  padding: 6px 10px;
+  border-radius: 8px;
+}
+.dashboard-container.s .widget-icon {
+  width: 24px;
+  height: 24px;
+  margin-right: 0px;
+  font-size: 0.9rem;
+}
+.dashboard-container.s .widget-value {
+  font-size: 0.95rem;
+  margin-top: 0;
+}
+
+/* M Size layout overrides */
+.dashboard-container.m {
+  gap: 10px;
+  padding: 12px;
+}
+.dashboard-container.m .widget {
+  padding: 8px 12px;
+  border-radius: 10px;
+}
+.dashboard-container.m .widget-icon {
+  width: 28px;
+  height: 28px;
+  margin-right: 0px;
+  font-size: 1.05rem;
+}
+.dashboard-container.m .widget-value {
+  font-size: 1.05rem;
+  margin-top: 0;
+}
+
+/* L Size layout overrides */
+.dashboard-container.l {
+  gap: 12px;
+  padding: 14px;
+}
+.dashboard-container.l .widget {
+  padding: 10px 14px;
+  border-radius: 11px;
+}
+.dashboard-container.l .widget-icon {
+  width: 30px;
+  height: 30px;
+  margin-right: 0px;
+  font-size: 1.15rem;
+}
+.dashboard-container.l .widget-value {
+  font-size: 1.15rem;
+  margin-top: 0;
+}
+
+/* XL Size layout overrides */
+.dashboard-container.xl {
+  gap: 12px;
+  padding: 16px;
+}
+.dashboard-container.xl .widget {
+  padding: 12px 16px;
+  border-radius: 12px;
+}
+.dashboard-container.xl .widget-icon {
+  width: 32px;
+  height: 32px;
+  margin-right: 0px;
+  font-size: 1.20rem;
+}
+.dashboard-container.xl .widget-value {
+  font-size: 1.20rem;
+  margin-top: 0;
+}
+
+/* Data Widget Styling */
+.widget {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255,255,255,0.03);
+  transition: all var(--transition-fast);
+}
+
+.widget:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+.widget-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+}
+
+.widget-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.widget-title {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.widget-value {
+  font-weight: 700;
+}
+
+.widget-subvalue {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  margin-top: 1px;
+}
+
+/* Colors for specific widgets */
+.widget.cpu .widget-icon { color: var(--color-cpu); background: rgba(0, 210, 255, 0.1); }
+.widget.ram .widget-icon { color: var(--color-ram); background: rgba(255, 0, 122, 0.1); }
+.widget.disk .widget-icon { color: var(--color-disk); background: rgba(0, 255, 135, 0.1); }
+.widget.net .widget-icon { color: var(--color-net); background: rgba(249, 212, 35, 0.1); }
+.widget.net.offline .widget-icon { color: #ff6b6b; background: rgba(255, 107, 107, 0.1); }
+.widget.gpu .widget-icon { color: var(--color-gpu); background: rgba(176, 106, 179, 0.1); }
